@@ -13,48 +13,48 @@ class Hotel{
         $this->ville = $ville;
     }
 
-    public function getRaisonSociale()
+    public function getRaisonSociale(): string
     {
         return $this->raisonSociale;
     }
 
-    public function setRaisonSociale($raisonSociale)
+    public function setRaisonSociale(string $raisonSociale)
     {
         $this->raisonSociale = $raisonSociale;
 
         return $this;
     }
 
-    public function getAdresse()
+    public function getAdresse(): string
     {
         return $this->adresse;
     }
 
-    public function setAdresse($adresse)
+    public function setAdresse(string $adresse)
     {
         $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getCp()
+    public function getCp(): string
     {
         return $this->cp;
     }
 
-    public function setCp($cp)
+    public function setCp(string $cp)
     {
         $this->cp = $cp;
 
         return $this;
     }
 
-    public function getVille()
+    public function getVille(): string
     {
         return $this->ville;
     }
 
-    public function setVille($ville)
+    public function setVille(string $ville)
     {
         $this->ville = $ville;
 
