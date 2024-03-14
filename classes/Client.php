@@ -32,4 +32,12 @@ class Client{
 
         return $this;
     }
-}
+    public function __toString(){
+        return $this->nom." ".$this->prenom;
+    }
+
+    public function afficherClient(){
+        $result= "<h2>client: $this</h2>";
+        return $result;
+    }
+    }

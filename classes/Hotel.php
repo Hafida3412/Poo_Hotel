@@ -60,4 +60,15 @@ class Hotel{
 
         return $this;
     }
+
+    public function __toString(){
+        return $this->raisonSociale;
+    }
+    public function afficherHotel(){
+        $result = "<h1>Nom de l'hôtel: $this<h1>";
+    }
+
+    public function getInfos(){
+        return $this. " se situe à l'adresse suivante: " .$this->getAdresse."<br>;
+    }
 }
