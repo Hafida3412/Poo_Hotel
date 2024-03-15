@@ -15,6 +15,7 @@ public function __construct(Hotel $hotel, Client $client, Reservation $reservati
     $this->reservation = $reservation;
     $this->dateDebut = $dateDebut;
     $this->dateFin = $dateFin;
+
  }
 
 
@@ -77,4 +78,5 @@ return $this->dateFin;
 
 return $this;
 }
+
 }
