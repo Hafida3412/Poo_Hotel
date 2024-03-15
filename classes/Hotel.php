@@ -63,7 +63,7 @@ class Hotel{
         return $this;
     }
     public function afficherHotel(){
-        $result = "<h1>Nom de l'hôtel: $this<h1>";
+        $result = "<h1>Nom de l'hôtel: $this->raisonSociale<h1>";
     }
     
     public function getAdresseComplete(){
@@ -71,15 +71,15 @@ class Hotel{
     }
     
     public function getInfos(){
-        return "<h1>L'adresse de" .$this ." est " .$this->getAdresseComplete();
+        return "<h1>L'adresse de " .$this ." est " .$this->getAdresseComplete();
 }
-public function getReservations():string
+public function getReservations()
 {
 return $this->reservations;
 }
 
 
-public function setReservations(string $reservations)
+public function setReservations($reservations)
 {
 $this->reservations = $reservations;
 
@@ -87,16 +87,20 @@ return $this;
 }
 
 public function addReservation(Reservation $Reservation){
-    $this->reservations[] = $reservation;
+    $this->reservations[] = $Reservation;
 }
 
 public function afficherClients(){
-    $result = "<h2>Clients de $this</h2>";
+    $result = "<h2>Clients de $this->raisonSociale;</h2>";
     
     foreach ($this->reservations as $reservation){
-        $result .= $reservation->getClient()." (".$raisonSociale->getraisonSociale(). $adresse->getAdresseComplete();
+        $result .= $reservation->getClient()." (".$this . $this->getAdresseComplete();
 
     return $result;  
 }
+}
+
+public function __toString(){
+return $this->raisonSociale;
 }
 }

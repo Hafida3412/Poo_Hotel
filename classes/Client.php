@@ -48,31 +48,25 @@ class Client{
         return $this;
     }
 
+
     public function addReservation(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
-
+    public function afficherClient(){
+        $result= "<h2>client: $this</h2>";
+        return $result;
+    }
+    
     public function afficherHotels(){
         $result = "<h3>Hôtels de $this</h3>";
-
-    foreach ($this->reservations as $reservation){
-        $result .= $reservation->getClient()." (".$numeroChambre." du " $reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
-    }
-    return $result;
+        
+        foreach ($this->reservations as $reservation){
+            $result .= $reservation->getClient()." (".$reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
+        }
+        return $result;
     }
     public function __toString(){
         return $this->nom." ".$this->prenom;
     }
 
-    
-
-
-
-
-
-
-    public function afficherClient(){
-        $result= "<h>client: $this</h2>";
-        return $result;
-    }
 }

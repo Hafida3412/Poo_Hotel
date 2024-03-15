@@ -93,20 +93,20 @@ class Chambre{
     }
 
     public function addReservation(Reservation $Reservation){
-        $this->reservations[] = $reservation;
+        $this->reservations[] = $Reservation;
 }
     
     public function afficherClients(){
     $result = "<h4> Chambre de $this</h2>";
 
     foreach ($this->reservations as $reservation){
-    $result .= $reservation->getClient()."(".$numeroChambre->getNumeroChambre()."(" .$nbLit->getNbLit(). $prix->getPrix() 
-    .$wifi->getWifi().")" ."du " $reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
+    $result .= $reservation->getClient()."(".$reservation->getNumeroChambre()."(" .$reservation->getNbLit(). $reservation->getPrix() 
+    .$reservation->getWifi().")" ."du " .$reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
 }
     return $result;
     }
 
     public function __toString(){
-        return $this-> afficherClients;
+        return $this-> afficherClients();
     }
 }
