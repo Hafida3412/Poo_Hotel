@@ -2,81 +2,80 @@
 
 class Reservation{
 
-private Hotel $hotel;
-private Client $client;
-private Reservation $reservation;
+private $nomClient;
+private $prenomClient;
 private DateTime $dateDebut;
 private DateTime $dateFin;
+private int $numeroChambre;
 
-public function __construct(Hotel $hotel, Client $client, Reservation $reservation,
- DateTime $dateDebut, DateTime $dateFin){
-    $this->hotel = $hotel;
-    $this->client = $client;
-    $this->reservation = $reservation;
+public function __construct( Client $nomclient, Client $prenomClient, DateTime $dateDebut,
+ DateTime $dateFin, int $numeroChambre){
+    $this->nomClient;
+    $this->prenomClient = $prenomClient;
     $this->dateDebut = $dateDebut;
     $this->dateFin = $dateFin;
+    $this->numeroChambre = $numeroChambre;
 
  }
 
-
-public function getHotel()
+public function getNomClient(): string
 {
-return $this->hotel;
+return $this->nomClient;
 }
 
-public function setHotel($hotel)
+
+public function setNomClient(string $nomClient)
 {
-$this->hotel = $hotel;
+$this->nomClient = $nomClient;
 
 return $this;
 }
 
-public function getClient()
+public function getPrenomClient(): string
 {
-return $this->client;
+return $this->prenomClient;
 }
 
-public function setClient($client)
+public function setPrenomClient(string $prenomClient)
 {
-$this->client = $client;
+$this->prenomClient = $prenomClient;
 
 return $this;
 }
 
-public function getReservation()
-{
-return $this->reservation;
-}
-
-public function setReservation($reservation)
-{
-$this->reservation = $reservation;
-
-return $this;
-}
-
-public function getDateDebut()
+public function getDateDebut(): DateTime
 {
 return $this->dateDebut;
 }
 
-public function setDateDebut($dateDebut)
+public function setDateDebut(DateTime $dateDebut)
 {
 $this->dateDebut = $dateDebut;
 
 return $this;
 }
 
-public function getDateFin()
+public function getDateFin(): DateTime
 {
 return $this->dateFin;
 }
 
- public function setDateFin($dateFin)
+public function setDateFin(DateTime $dateFin)
 {
- $this->dateFin = $dateFin;
+$this->dateFin = $dateFin;
 
 return $this;
 }
 
+public function getNumeroChambre(): int
+{
+return $this->numeroChambre;
+}
+
+public function setNumeroChambre(int $numeroChambre)
+{
+$this->numeroChambre = $numeroChambre;
+
+return $this;
+}
 }

@@ -1,23 +1,20 @@
 <?php
 
 class Chambre{
-    private string $numeroChambre;
+    private int $numeroChambre;
     private string $nbLit;
-    private string $wifi;
-    private string $prix;
-    private string $reservee;
-    private array $reservations;
+    private bool $wifi;
+    private float $prix;
+    private bool $reserved;
 
 
-
-    public function __construct(string $numeroChambre, string $nbLit, string $wifi,
-    string $prix, string $reservee){
+    public function __construct(int $numeroChambre, string $nbLit, bool $wifi,
+    float $prix, bool $reserved){
         $this->numeroChambre = $numeroChambre;
         $this->nbLit = $nbLit;
         $this->wifi = $wifi;
         $this->prix = $prix;
-        $this->reservee = $reservee;
-        $this->reservations =[];
+        $this->reserved = $reserved;
     }
 
     public function getNumeroChambre(): int
@@ -32,12 +29,12 @@ class Chambre{
         return $this;
     }
 
-    public function getNbLit(): int
+    public function getNbLit(): string
     {
         return $this->nbLit;
     }
 
-    public function setNbLit(int $nbLit)
+    public function setNbLit(string $nbLit)
     {
         $this->nbLit = $nbLit;
 
@@ -68,45 +65,16 @@ class Chambre{
         return $this;
     }
 
-    public function getReservee(): bool
+    public function getReserved(): bool
     {
-        return $this->reservee;
+        return $this->reserved;
     }
 
-    public function setReservee(bool $reservee)
+    public function setReserved(bool $reserved)
     {
-        $this->reservee = $reservee;
+        $this->reserved = $reserved;
 
         return $this;
      }
 
-    public function getReservations()
-    {
-        return $this->reservations;
-    }
-
-    public function setReservations($reservations)
-    {
-        $this->reservations = $reservations;
-
-        return $this;
-    }
-
-    public function addReservation(Reservation $Reservation){
-        $this->reservations[] = $Reservation;
-}
-    
-    public function afficherClients(){
-    $result = "<h4> Chambre de $this</h2>";
-
-    foreach ($this->reservations as $reservation){
-    $result .= $reservation->getClient()."(".$reservation->getNumeroChambre()."(" .$reservation->getNbLit(). $reservation->getPrix() 
-    .$reservation->getWifi().")" ."du " .$reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
-}
-    return $result;
-    }
-
-    public function __toString(){
-        return $this-> afficherClients();
-    }
 }

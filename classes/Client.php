@@ -3,13 +3,19 @@
 class Client{
     private string $nom;
     private string $prenom;
+    private string $numeroChambre;
+    private dateTime $dateDebut;
+    private dateTime $dateFin;
+   
 
-    private array $reservations;
-
-    public function __construct(string $nom, string $prenom){
+    public function __construct(string $nom, string $prenom, string $numeroChambre, DateTime $dateDebut,
+     DateTime $dateFin ){
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->reservations =[];
+        $this->numeroChambre = $numeroChambre;
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+    
     }
 
     public function getNom(): string
@@ -35,38 +41,51 @@ class Client{
 
         return $this;
     }
+   
     
-    public function getReservations()
+    public function getNumeroChambre(): string
     {
-        return $this->reservations;
+        return $this->numeroChambre;
     }
     
-    public function setReservations($reservations)
+    public function setNumeroChambre(string $numeroChambre)
     {
-        $this->reservations = $reservations;
+        $this->numeroChambre = $numeroChambre;
         
         return $this;
     }
-
-
-    public function addReservation(Reservation $reservation){
-        $this->reservations[] = $reservation;
+    
+    public function getDateDebut(): DateTime
+    {
+        return $this->dateDebut;
+    }
+    
+    public function setDateDebut(DateTime $dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+        
+        return $this;
+    }
+    
+    
+    public function getDateFin(): DateTime
+    {
+        return $this->dateFin;
+    }
+    
+    
+    public function setDateFin(DateTime $dateFin)
+    {
+        $this->dateFin = $dateFin;
+        
+        return $this;
     }
     public function afficherClient(){
         $result= "<h2>client: $this</h2>";
         return $result;
     }
     
-    public function afficherHotels(){
-        $result = "<h3>Hôtels de $this</h3>";
-        
-        foreach ($this->reservations as $reservation){
-            $result .= $reservation->getClient()." (".$reservation->getDateDebut(). " au ".$reservation->getDateFin().")<br>";
-        }
-        return $result;
-    }
     public function __toString(){
         return $this->nom." ".$this->prenom;
     }
-
 }

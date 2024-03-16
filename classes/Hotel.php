@@ -5,14 +5,21 @@ class Hotel{
     private string $adresse;
     private string $cp;
     private string $ville;
-    private array $reservations;
 
-    public function __construct(string $raisonSociale, string $adresse, $cp, string $ville){
+    private int $nbChambre;
+    private int $nbChambreReserved;
+    private int $nbChambreDispo;
+
+    public function __construct(string $raisonSociale, string $adresse, $cp, string $ville, int $nbChambre, 
+    int $nbChambreReserved, int $nbChambreDispo){
         $this->raisonSociale = $raisonSociale;
         $this->adresse = $adresse;
         $this->cp = $cp;
         $this->ville = $ville;
-        $this->reservations =[];
+        $this->nbChambre = $nbChambre;
+        $this->nbChambreReserved = $nbChambreReserved;
+        $this->nbChambreDispo = $nbChambreDispo;
+    
     }
 
     public function getRaisonSociale(): string
@@ -62,45 +69,57 @@ class Hotel{
 
         return $this;
     }
-    public function afficherHotel(){
-        $result = "<h1>Nom de l'hôtel: $this->raisonSociale<h1>";
+
+    public function getNbChambre(): int
+    {
+        return $this->nbChambre;
     }
     
-    public function getAdresseComplete(){
-        return $this->adresse." ".$this->cp." ".$this->ville;
-    }
-    
-    public function getInfos(){
-        return "<h1>L'adresse de " .$this ." est " .$this->getAdresseComplete();
-}
-public function getReservations()
+    public function setNbChambre(int $nbChambre)
 {
-return $this->reservations;
-}
-
-
-public function setReservations($reservations)
-{
-$this->reservations = $reservations;
-
-return $this;
-}
-
-public function addReservation(Reservation $Reservation){
-    $this->reservations[] = $Reservation;
-}
-
-public function afficherClients(){
-    $result = "<h2>Clients de $this->raisonSociale;</h2>";
+    $this->nbChambre = $nbChambre;
     
-    foreach ($this->reservations as $reservation){
-        $result .= $reservation->getClient()." (".$this . $this->getAdresseComplete();
-
-    return $result;  
-}
+    return $this;
 }
 
+    public function getNbChambreReserved(): int
+{
+    return $this->nbChambreReserved;
+}
+
+
+    public function setNbChambreReserved(int $nbChambreReserved)
+{
+    $this->nbChambreReserved = $nbChambreReserved;
+    
+    return $this;
+}
+
+    public function getNbChambreDispo(): int
+{
+    return $this->nbChambreDispo;
+}
+
+    public function setNbChambreDispo(int $nbChambreDispo)
+{
+    $this->nbChambreDispo = $nbChambreDispo;
+    
+    return $this;
+}
+
+
+public function afficherHotel(){
+    $result = "<h1>Nom de l'hôtel: $this->raisonSociale<h1>";
+}
+
+public function getAdresseComplete(){
+    return $this->adresse." ".$this->cp." ".$this->ville;
+}
+
+public function getInfos(){
+    return "<h1>L'adresse de " .$this ." est " .$this->getAdresseComplete();
+}
 public function __toString(){
-return $this->raisonSociale;
+    return $this->raisonSociale;
 }
 }
