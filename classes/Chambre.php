@@ -94,20 +94,20 @@ class Chambre{
     public function addReservations(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
-    
+    public function afficherWifi(){
+        return $this->wifi? 'Wifi disponible' : 'Wifi non disponible';
+    }
+
+    public function afficheretat(){
+        return $this->etat? 'disponible' : 'chambre réservée';
+    }
     public function afficherChambre(){
-       $result = "Chambre:". $this->getNumeroChambre(). " ". $this->getNbLit().
-        " ".$this->getWifi()." ".$this->getPrix()." ".$this->getEtat()."<br>";
+       echo "Chambre:". $this->getNumeroChambre(). " ".$this->getPrix()." ".$this->getWifi()." ".$this->getEtat()."<br>";
 
        foreach($this->reservations as $reservation){
-        $result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
+        echo "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
         . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
     }
 
-    return $result;
-    }
-
-    public function __toString(){
-        return $this->afficherChambre();
-    }
-    }
+}
+}

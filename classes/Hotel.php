@@ -120,8 +120,8 @@ return $this;
 }
 
 public function afficherInfoHotel(){
-    $result = $this->getRaisonSociale(). "<br>". $this->getAdresseComplete(). "<br>".
-    $this->getNbChambre().": <br>". $this->getNbChambreDispo().": <br>";
+    return  $this->getRaisonSociale(). "<br>". $this->getAdresseComplete(). "<br>". "Nombre de chambres:".
+    $this->getNbChambre()." <br>". "Nombre de chambres dispo:".$this->getNbChambreDispo()." <br><br>";
 
 }
 public function addReservation(Reservation $reservation){
@@ -141,9 +141,9 @@ public function afficheretat(){
     foreach($this->chambres as $chambre){
         echo "Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix(). $chambre->getWifi().
          $chambre->getEtat()."<br>";
-     
        }
 }
+
 public function __toString(){
     return $this->raisonSociale;
 }
