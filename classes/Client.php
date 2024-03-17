@@ -4,8 +4,8 @@ class Client{
     private string $nom;
     private string $prenom;
     private string $numeroChambre;
-    private dateTime $dateDebut;
-    private dateTime $dateFin;
+    private DateTime $dateDebut;
+    private DateTime $dateFin;
    
 
     public function __construct(string $nom, string $prenom, string $numeroChambre, DateTime $dateDebut,
@@ -13,8 +13,8 @@ class Client{
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->numeroChambre = $numeroChambre;
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
+        $this->dateDebut = new DateTime;
+        $this->dateFin = new DateTime;
     
     }
 
@@ -55,34 +55,35 @@ class Client{
         return $this;
     }
     
-    public function getDateDebut(): DateTime
+    public function getDateDebut()
     {
-        return $this->dateDebut;
+        return $this->dateDebut->format("d-m-Y");
     }
     
-    public function setDateDebut(DateTime $dateDebut)
+    public function setDateDebut($dateDebut)
     {
-        $this->dateDebut = $dateDebut;
+        $this->dateDebut = $dateDebut->format("d-m-Y");
         
         return $this;
     }
     
     
-    public function getDateFin(): DateTime
-    {
-        return $this->dateFin;
+    public function getDateFin(){
+        return $this->dateFin->format("d-m-Y");
     }
     
     
-    public function setDateFin(DateTime $dateFin)
+    public function setDateFin($dateFin)
     {
-        $this->dateFin = $dateFin;
+        $this->dateFin = $dateFin->format("d-m-Y");
         
         return $this;
     }
-    public function afficherClient(){
-        $result= "<h2>client: $this</h2>";
-        return $result;
+   
+
+    public function getInfos(){
+        return "<h2>".$this. " ".$this->getNumeroChambre()." ".$this->getDateDebut().
+         " ".$this->getDateFin()."</h2>";
     }
     
     public function __toString(){

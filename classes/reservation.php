@@ -12,8 +12,8 @@ public function __construct( Client $nomclient, Client $prenomClient, DateTime $
  DateTime $dateFin, int $numeroChambre){
     $this->nomClient;
     $this->prenomClient = $prenomClient;
-    $this->dateDebut = $dateDebut;
-    $this->dateFin = $dateFin;
+    $this->dateDebut = new DateTime;
+    $this->dateFin = new DateTime;
     $this->numeroChambre = $numeroChambre;
 
  }
@@ -43,26 +43,26 @@ $this->prenomClient = $prenomClient;
 return $this;
 }
 
-public function getDateDebut(): DateTime
+public function getDateDebut()
 {
-return $this->dateDebut;
+return $this->dateDebut->format("d-m-Y");;
 }
 
-public function setDateDebut(DateTime $dateDebut)
+public function setDateDebut($dateDebut)
 {
-$this->dateDebut = $dateDebut;
+$this->dateDebut = $dateDebut->format("d-m-Y");;
 
 return $this;
 }
 
-public function getDateFin(): DateTime
+public function getDateFin()
 {
-return $this->dateFin;
+return $this->dateFin->format("d-m-Y");
 }
 
-public function setDateFin(DateTime $dateFin)
+public function setDateFin($dateFin)
 {
-$this->dateFin = $dateFin;
+$this->dateFin = $dateFin->format("d-m-Y");
 
 return $this;
 }
@@ -77,5 +77,10 @@ public function setNumeroChambre(int $numeroChambre)
 $this->numeroChambre = $numeroChambre;
 
 return $this;
+}
+
+public function getInfos(){
+   return $this->getNomClient(). " ".$this->getPrenomClient(). " ".$this->getDateDebut().
+    " ".$this-> getDateFin(). " ".$this->getNumeroChambre();
 }
 }

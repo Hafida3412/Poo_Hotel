@@ -10,10 +10,3 @@ spl_autoload_register(function ($class_name){
     require 'classes/'. $class_name . '.php';
 });
 
-
-
-echo $h1->getInfos();
-echo $h1->afficherHotel();
-
-echo $Virgile->afficherClient();
-echo $Micka->afficherClient();

@@ -117,9 +117,11 @@ public function getAdresseComplete(){
 }
 
 public function getInfos(){
-    return "<h1>L'adresse de " .$this ." est " .$this->getAdresseComplete();
+    return "<h1>" .$this ." " .$this->getAdresseComplete()." ".$this->getNbChambre().
+     " ".$this->getNbChambreReserved(). " ".$this->getNbChambreDispo()."</h1>";
 }
 public function __toString(){
     return $this->raisonSociale;
 }
+
 }

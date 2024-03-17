@@ -5,16 +5,16 @@ class Chambre{
     private string $nbLit;
     private bool $wifi;
     private float $prix;
-    private bool $reserved;
+    private string $etat;
 
 
     public function __construct(int $numeroChambre, string $nbLit, bool $wifi,
-    float $prix, bool $reserved){
+    float $prix, string $etat){
         $this->numeroChambre = $numeroChambre;
         $this->nbLit = $nbLit;
         $this->wifi = $wifi;
         $this->prix = $prix;
-        $this->reserved = $reserved;
+        $this->etat = $etat;
     }
 
     public function getNumeroChambre(): int
@@ -64,17 +64,22 @@ class Chambre{
 
         return $this;
     }
-
-    public function getReserved(): bool
+    
+    public function getEtat(): string
     {
-        return $this->reserved;
+        return $this->etat;
+    }
+    
+    public function setEtat(string $etat)
+    {
+        $this->etat = $etat;
+        
+        return $this;
+    }
+    
+    public function getInfos(){
+       return $this->getNumeroChambre()." ".$this->getNumeroChambre(). " ". $this->getNbLit().
+        " ".$this->getWifi()." ".$this->getPrix()." ".$this->getEtat();
     }
 
-    public function setReserved(bool $reserved)
-    {
-        $this->reserved = $reserved;
-
-        return $this;
      }
-
-}
