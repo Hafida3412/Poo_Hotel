@@ -2,44 +2,28 @@
 
 class Reservation{
 
-private $nomClient;
-private $prenomClient;
+private Client $Client;
 private DateTime $dateDebut;
 private DateTime $dateFin;
 private int $numeroChambre;
 
-public function __construct( Client $nomclient, Client $prenomClient, DateTime $dateDebut,
- DateTime $dateFin, int $numeroChambre){
-    $this->nomClient;
-    $this->prenomClient = $prenomClient;
-    $this->dateDebut = new DateTime;
-    $this->dateFin = new DateTime;
-    $this->numeroChambre = $numeroChambre;
-
- }
-
-public function getNomClient(): string
-{
-return $this->nomClient;
+public function __construct( Client $client, string $dateDebut,
+string $dateFin, int $numeroChambre){
+   $this->Client = $client;
+   $this->dateDebut = new DateTime;
+   $this->dateFin = new DateTime();
+   $this->numeroChambre = $numeroChambre;
 }
-
-
-public function setNomClient(string $nomClient)
+   
+public function getClient()
 {
-$this->nomClient = $nomClient;
-
-return $this;
+return $this->Client;
 }
-
-public function getPrenomClient(): string
+   
+public function setClient($Client)
 {
-return $this->prenomClient;
-}
-
-public function setPrenomClient(string $prenomClient)
-{
-$this->prenomClient = $prenomClient;
-
+$this->Client = $Client;
+   
 return $this;
 }
 
@@ -79,8 +63,6 @@ $this->numeroChambre = $numeroChambre;
 return $this;
 }
 
-public function getInfos(){
-   return $this->getNomClient(). " ".$this->getPrenomClient(). " ".$this->getDateDebut().
-    " ".$this-> getDateFin(). " ".$this->getNumeroChambre();
-}
-}
+ }
+
+

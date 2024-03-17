@@ -7,19 +7,18 @@ class Hotel{
     private string $ville;
 
     private int $nbChambre;
-    private int $nbChambreReserved;
     private int $nbChambreDispo;
+    private array $reservations;
 
     public function __construct(string $raisonSociale, string $adresse, $cp, string $ville, int $nbChambre, 
-    int $nbChambreReserved, int $nbChambreDispo){
+    int $nbChambreDispo){
         $this->raisonSociale = $raisonSociale;
         $this->adresse = $adresse;
         $this->cp = $cp;
         $this->ville = $ville;
         $this->nbChambre = $nbChambre;
-        $this->nbChambreReserved = $nbChambreReserved;
         $this->nbChambreDispo = $nbChambreDispo;
-    
+        $this->reservations = [];
     }
 
     public function getRaisonSociale(): string
@@ -81,20 +80,6 @@ class Hotel{
     
     return $this;
 }
-
-    public function getNbChambreReserved(): int
-{
-    return $this->nbChambreReserved;
-}
-
-
-    public function setNbChambreReserved(int $nbChambreReserved)
-{
-    $this->nbChambreReserved = $nbChambreReserved;
-    
-    return $this;
-}
-
     public function getNbChambreDispo(): int
 {
     return $this->nbChambreDispo;
@@ -107,21 +92,33 @@ class Hotel{
     return $this;
 }
 
-
-public function afficherHotel(){
-    $result = "<h1>Nom de l'hôtel: $this->raisonSociale<h1>";
-}
-
 public function getAdresseComplete(){
     return $this->adresse." ".$this->cp." ".$this->ville;
 }
 
 public function getInfos(){
-    return "<h1>" .$this ." " .$this->getAdresseComplete()." ".$this->getNbChambre().
-     " ".$this->getNbChambreReserved(). " ".$this->getNbChambreDispo()."</h1>";
+    return $this ." " .$this->getAdresseComplete()." ".$this->getNbChambre(). " ".$this->getNbChambreDispo();
 }
-public function __toString(){
-    return $this->raisonSociale;
+
+public function getReservations()
+{
+    return $this->reservations;
+}
+public function setReservations($reservations)
+{
+    $this->reservations = $reservations;
+    return $this;
+}
+
+public function addReservation(Reservation $reservation){
+    $this->reservations[] = $reservation;
 }
 
 }
+    
+        
+        
+        
+        
+       
+    

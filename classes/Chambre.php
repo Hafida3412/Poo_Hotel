@@ -6,6 +6,7 @@ class Chambre{
     private bool $wifi;
     private float $prix;
     private string $etat;
+    private array $reservations;
 
 
     public function __construct(int $numeroChambre, string $nbLit, bool $wifi,
@@ -15,6 +16,7 @@ class Chambre{
         $this->wifi = $wifi;
         $this->prix = $prix;
         $this->etat = $etat;
+        $this->reservations = [];
     }
 
     public function getNumeroChambre(): int
@@ -77,9 +79,35 @@ class Chambre{
         return $this;
     }
     
-    public function getInfos(){
-       return $this->getNumeroChambre()." ".$this->getNumeroChambre(). " ". $this->getNbLit().
-        " ".$this->getWifi()." ".$this->getPrix()." ".$this->getEtat();
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+    
+    public function setReservations($reservations)
+    {
+        $this->reservations = $reservations;
+        
+        return $this;
+    }
+    
+    public function addReservations(Reservation $reservation){
+        $this->reservations[] = $reservation;
+    }
+    
+    public function afficherChambre(){
+       $result = "Chambre:". $this->getNumeroChambre(). " ". $this->getNbLit().
+        " ".$this->getWifi()." ".$this->getPrix()." ".$this->getEtat()."<br>";
+
+       foreach($this->reservations as $reservation){
+        $result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
+        . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
     }
 
-     }
+    return $result;
+    }
+
+    public function __toString(){
+        return $this->afficherChambre();
+    }
+    }

@@ -6,6 +6,8 @@ class Client{
     private string $numeroChambre;
     private DateTime $dateDebut;
     private DateTime $dateFin;
+    private array $reservations;
+
    
 
     public function __construct(string $nom, string $prenom, string $numeroChambre, DateTime $dateDebut,
@@ -15,7 +17,7 @@ class Client{
         $this->numeroChambre = $numeroChambre;
         $this->dateDebut = new DateTime;
         $this->dateFin = new DateTime;
-    
+        $this->reservations = [];
     }
 
     public function getNom(): string
@@ -42,7 +44,6 @@ class Client{
         return $this;
     }
    
-    
     public function getNumeroChambre(): string
     {
         return $this->numeroChambre;
@@ -79,14 +80,26 @@ class Client{
         
         return $this;
     }
-   
-
     public function getInfos(){
         return "<h2>".$this. " ".$this->getNumeroChambre()." ".$this->getDateDebut().
          " ".$this->getDateFin()."</h2>";
+    }
+   
+    public function addReservation(Reservation $reservation){
+        $this->reservations[] = $reservation;
+    }
+    public function afficherReservationsClient (){
+        $result = "<h3>Reservation de" .$this. "</h3>";
+        
+        foreach ($this->reservations as $reservation){
+            $result .=  $result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
+            . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
+        }
+        return $result;
     }
     
     public function __toString(){
         return $this->nom." ".$this->prenom;
     }
 }
+
