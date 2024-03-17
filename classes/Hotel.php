@@ -9,6 +9,7 @@ class Hotel{
     private int $nbChambre;
     private int $nbChambreDispo;
     private array $reservations;
+    private array $chambres;
 
     public function __construct(string $raisonSociale, string $adresse, $cp, string $ville, int $nbChambre, 
     int $nbChambreDispo){
@@ -19,6 +20,7 @@ class Hotel{
         $this->nbChambre = $nbChambre;
         $this->nbChambreDispo = $nbChambreDispo;
         $this->reservations = [];
+        $this->chambres = [];
     }
 
     public function getRaisonSociale(): string
@@ -96,25 +98,62 @@ public function getAdresseComplete(){
     return $this->adresse." ".$this->cp." ".$this->ville;
 }
 
-public function getInfos(){
-    return $this ." " .$this->getAdresseComplete()." ".$this->getNbChambre(). " ".$this->getNbChambreDispo();
-}
-
 public function getReservations()
 {
     return $this->reservations;
 }
 public function setReservations($reservations)
 {
-    $this->reservations = $reservations;
-    return $this;
+$this->reservations = $reservations;
+return $this;
+}
+public function getChambres()
+{
+return $this->chambres;
+}
+    
+public function setChambres($chambres)
+{
+$this->chambres = $chambres;
+    
+return $this;
 }
 
+public function afficherInfoHotel(){
+    $result = $this->getRaisonSociale(). "<br>". $this->getAdresseComplete(). "<br>".
+    $this->getNbChambre().": <br>". $this->getNbChambreDispo().": <br>";
+
+}
 public function addReservation(Reservation $reservation){
     $this->reservations[] = $reservation;
 }
+public function afficherReservationsClient (){
+$result = "<h1>Reservation de" .$this."</h1>";
+        
+foreach ($this->reservations as $reservation){
+$result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
+ . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). $reservation->getPrix(). "<br>";
+}
+return $result;
+}
+
+public function afficheretat(){
+    foreach($this->chambres as $chambre){
+        echo "Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix(). $chambre->getWifi().
+         $chambre->getEtat()."<br>";
+     
+       }
+}
+public function __toString(){
+    return $this->raisonSociale;
+}
+
 
 }
+
+
+
+
     
         
         

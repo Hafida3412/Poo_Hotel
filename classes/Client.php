@@ -93,7 +93,7 @@ class Client{
         
         foreach ($this->reservations as $reservation){
             $result .=  $result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
-            . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
+            . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). $reservation->getPrix(). "<br>";
         }
         return $result;
     }
