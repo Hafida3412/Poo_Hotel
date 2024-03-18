@@ -94,20 +94,36 @@ class Chambre{
     public function addReservations(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
-    public function afficherWifi(){
-        return $this->wifi? 'Wifi disponible' : 'Wifi non disponible';
-    }
-
-    public function afficheretat(){
-        return $this->etat? 'disponible' : 'chambre réservée';
-    }
     public function afficherChambre(){
-       echo "Chambre:". $this->getNumeroChambre(). " ".$this->getPrix()." ".$this->getWifi()." ".$this->getEtat()."<br>";
-
+        $result= "Chambre:". $this->getNumeroChambre(). " ".$this->getNbLit(). " ".$this->getPrix()." ".$this->getWifi()
+        ." ".$this->getEtat()."<br>";
+       
        foreach($this->reservations as $reservation){
-        echo "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
+    $result=  "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
         . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
     }
+       return $result;
+    }
+    
+    public function afficherEtat(){
+    $etat = true;
+    $wifi = true;
 
+    if ($etat=true) {
+    echo 'disponible';
+    if ($wifi=true) {
+        echo 'wifi';
+    } else {
+        echo "no wifi";
+    }
+    } else {
+    echo "no dispo";
+    }
+    }
+public function __toString(){
+    return $this->afficherChambre();
 }
 }
+
+
+

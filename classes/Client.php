@@ -80,25 +80,29 @@ class Client{
         
         return $this;
     }
+        public function getInfos(){
+            return "<h2>".$this. "Chambre:".$this->getNumeroChambre()." - du ".$this->getDateDebut().
+            " au ".$this->getDateFin()."</h2>";
+        }
+        
+        public function addReservation(Reservation $reservation){
+            $this->reservations[] = $reservation;
+        }
+        public function afficherReservationsClient (){
+            $result= "<h3>Reservation de " .$this. ": </h3>";
+            
+            foreach ($this->reservations as $reservation){
+                $result .= "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
+                . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
+            }
+            return $result;
+        }
+        
     public function __toString(){
         return $this->nom." ".$this->prenom;
     }
-    public function getInfos(){
-        return "<h2>".$this. "Chambre:".$this->getNumeroChambre()." - du ".$this->getDateDebut().
-        " au ".$this->getDateFin()."</h2>";
-    }
-   
-    public function addReservation(Reservation $reservation){
-        $this->reservations[] = $reservation;
-    }
-    public function afficherReservationsClient (){
-        return "<h3>Reservation de " .$this. ": </h3>";
         
-        foreach ($this->reservations as $reservation){
-            echo "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
-            . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
-        }
-        }
     }
+
     
 

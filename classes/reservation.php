@@ -76,15 +76,19 @@ $this->prix = $prix;
 return $this;
 }
 
-public function getNbNuits(){
-   $interval = $this->dateDebut->diff($this->dateFin);
-   return $interval->days;
+
+public function calculerNbNuits(){
+   $diff= $this->dateDebut->diff($this->dateFin);
+   return $diff->days;
 }
 
 public function calculerMontantTotal(){
-   return $this->getNbNuits() * $this->getPrix();
+   $nbNuits = $this->calculerNbNuits();
+   return $nbNuits * $this->prix;
 }
 
- }
+}
+
+ 
 
 

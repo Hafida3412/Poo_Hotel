@@ -122,7 +122,6 @@ return $this;
 public function afficherInfoHotel(){
     return  $this->getRaisonSociale(). "<br>". $this->getAdresseComplete(). "<br>". "Nombre de chambres:".
     $this->getNbChambre()." <br>". "Nombre de chambres dispo:".$this->getNbChambreDispo()." <br><br>";
-
 }
 public function addReservation(Reservation $reservation){
     $this->reservations[] = $reservation;
@@ -139,9 +138,9 @@ return $result;
 
 public function afficheretat(){
     foreach($this->chambres as $chambre){
-        echo "Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix(). $chambre->getWifi().
-         $chambre->getEtat()."<br>";
-       }
+    echo "Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix(). $chambre->getWifi().
+    $chambre->getEtat()."<br>";
+}
 }
 
 public function __toString(){
