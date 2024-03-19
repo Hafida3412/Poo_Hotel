@@ -31,12 +31,12 @@ return $this;
 
 public function getDateDebut()
 {
-return $this->dateDebut->format("d-m-Y");;
+return $this->dateDebut->format("d-m-Y");
 }
 
 public function setDateDebut($dateDebut)
 {
-$this->dateDebut = $dateDebut->format("d-m-Y");;
+$this->dateDebut = $dateDebut->format("d-m-Y");
 
 return $this;
 }
@@ -65,8 +65,6 @@ $this->chambre = $chambre;
 return $this;
 }
 
-
-
 public function calculerNbNuits(){
    $diff= $this->dateDebut->diff($this->dateFin);
    return $diff->days;
@@ -74,7 +72,12 @@ public function calculerNbNuits(){
 
 public function calculerMontantTotal(){
    $nbNuits = $this->calculerNbNuits();
-   return $nbNuits * $this->chambre->getPrix(); //chambre get =prix
+   return "Montant total:". $nbNuits * $this->chambre->getPrix()."€<br>"; //chambre get =prix
+}
+
+public function afficherReservations(){
+   $result= "Hôtel:".$this->chambre->getHotel()->addReservation($this). "Chambre:" .$this->getChambre(). "du"
+   .$this->getDateDebut(). "au" .$this->getDateFin();   
 }
 
 }

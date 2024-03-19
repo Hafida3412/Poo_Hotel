@@ -35,5 +35,6 @@ echo $client1->afficherReservationsClient();
 
 // var_dump($client2->getReservations());
 
-
+echo $Hilton->afficherReservationsHotel();
+echo $Regent->afficherReservationsHotel();
 
