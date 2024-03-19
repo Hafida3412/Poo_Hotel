@@ -72,12 +72,12 @@ public function calculerNbNuits(){
 
 public function calculerMontantTotal(){
    $nbNuits = $this->calculerNbNuits();
-   return $nbNuits * $this->prix; //chambre get =prix
+   return $nbNuits * $this->chambre->getPrix(); //chambre get =prix
+}
+
 }
 
 
-
-}
 
  
 
