@@ -16,6 +16,7 @@ class Hotel{
         $this->ville = $ville;
         $this->reservations = [];
         $this->chambres = [];
+      
     }
 
     public function addChambre(Chambre $chambre){
@@ -128,12 +129,11 @@ class Hotel{
         $this->reservations[] = $reservation;
     }
      
-
     public function afficherReservationsClient (){
-    $result = "<h3>Reservation de" .$this."</h3>";
+    $result = "<h1>Reservation de" .$this."</h1>";
             
     foreach ($this->reservations as $reservation){
-    $result .= $reservation->getClient()." ".$reservation->getNumeroChambre()
+    $result .= $reservation->getRaisonSociale(). $reservation->getClient()." ".$reservation->getNumeroChambre()
     . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). $reservation->getPrix(). "<br>";
     }
     return $result;

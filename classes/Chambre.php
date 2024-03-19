@@ -110,11 +110,13 @@ class Chambre{
         $this->reservations[] = $reservation;
     }
     public function afficherChambre(){
-        $result= "Chambre:". $this->getNumeroChambre(). " ".$this->getNbLit().
-         " ".$this->getPrix()." ".$this->getWifi()." ".$this->getEtat()."<br>";
+        $result= "Chambre:". $this->getNumeroChambre().
+         " ".$this->getNbLit()."lits".
+         "-".$this->getPrix()."€ - Wifi:".$this->getWifi().
+         " - dispo:".$this->getEtat()."<br>";
        
        foreach($this->reservations as $reservation){
-        $result=  "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
+        $result .= $reservation->getRaisonSociale(). " " .$reservation->getClient(). " ".$reservation->getNumeroChambre()
         . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
     }
        return $result;

@@ -18,6 +18,8 @@ class Client{
         $this->dateDebut = $dateDebut;
         $this->dateFin = $dateFin;
         $this->reservations = [];
+    
+
     }
 
     public function getNom(): string
@@ -92,9 +94,12 @@ class Client{
             $result= "<h3>Reservation de " .$this. ": </h3>";
             
             foreach ($this->reservations as $reservation){
-                $result .= "reservation:".$reservation->getClient(). " ".$reservation->getNumeroChambre()
-                . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
+                $result .= $reservation->getClient()->getNom()."<br>". $reservation->calculerMontantTotal()."<br>";
+                // . " ".$reservation->getNumeroChambre()
+                // . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
             }
+
+            $result .= "<br>"."<br>";
             return $result;
         }
         
@@ -102,6 +107,26 @@ class Client{
         return $this->nom." ".$this->prenom;
     }
         
+
+    /**
+     * Get the value of reservations
+     */ 
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Set the value of reservations
+     *
+     * @return  self
+     */ 
+    public function setReservations($reservations)
+    {
+        $this->reservations = $reservations;
+
+        return $this;
+    }
     }
 
     
