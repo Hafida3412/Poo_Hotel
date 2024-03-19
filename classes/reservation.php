@@ -5,16 +5,14 @@ class Reservation{
 private Client $Client;
 private DateTime $dateDebut;
 private DateTime $dateFin;
-private int $numeroChambre;
-private float $prix;
+private Chambre $chambre;
 
 public function __construct( Client $client, string $dateDebut,
-string $dateFin, int $numeroChambre, float $prix){
+string $dateFin, Chambre $chambre){
    $this->Client = $client;
    $this->dateDebut = new DateTime($dateDebut);
    $this->dateFin = new DateTime($dateFin);
-   $this->numeroChambre = $numeroChambre;
-   $this->prix = $prix;
+   $this->chambre = $chambre;
 }
    
 public function getClient()
@@ -53,28 +51,18 @@ $this->dateFin = $dateFin->format("d-m-Y");
 return $this;
 }
 
-public function getNumeroChambre(): int
+public function getChambre()
 {
-return $this->numeroChambre;
+return $this->chambre;
 }
 
-public function setNumeroChambre(int $numeroChambre)
+public function setChambre($chambre)
 {
-   $this->numeroChambre = $numeroChambre;
-   
-   return $this;
-}
-public function getPrix()
-{
-return $this->prix;
-}
-
-public function setPrix($prix)
-{
-$this->prix = $prix;
+$this->chambre = $chambre;
 
 return $this;
 }
+
 
 
 public function calculerNbNuits(){
@@ -84,8 +72,10 @@ public function calculerNbNuits(){
 
 public function calculerMontantTotal(){
    $nbNuits = $this->calculerNbNuits();
-   return $nbNuits * $this->prix;
+   return $nbNuits * $this->prix; //chambre get =prix
 }
+
+
 
 }
 
