@@ -106,9 +106,9 @@ class Client{
             $result= "<h3>Reservation de " .$this. ": </h3>";
             
             foreach ($this->reservations as $reservation){
-                $result .= $reservation->getClient()->getNom()."<br>". "<br>". $reservation->calculerMontantTotal()."<br>";
-                 //. " ".$reservation->getNumeroChambre()
-                 //. " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
+                $result .= $reservation->getClient()->getNom()."<br>". "<br>". $reservation->calculerMontantTotal()."<br>".
+                 " ".$this->getNumeroChambre().
+                 "du " .$reservation->getDateDebut()."au ".$reservation->getDateFin(). "<br>";
             }
 
             $result .= "<br>"."<br>";

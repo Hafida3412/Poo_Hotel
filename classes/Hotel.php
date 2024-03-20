@@ -21,8 +21,8 @@ class Hotel{
 
 
 
-public function getRaisonSociale(): string
-{
+    public function getRaisonSociale(): string
+    {
         return $this->raisonSociale;
     }
 
@@ -132,8 +132,8 @@ public function afficherReservationsHotel(){
     $result = "<h1>Reservation de" .$this."</h1>";
     
     foreach ($this->reservations as $reservation){
-        $result .= $reservation->getClient()->getNom()/*." ".$reservation->getNumeroChambre()*/
-        . " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). /*$reservation->getPrix().*/ "<br>";
+        $result .= $reservation->getClient()->getNom()."<br>". /*$Chambres->getNumeroChambre()*/
+        " " .$reservation->getDateDebut()." ".$reservation->getDateFin(). "<br>";
     }
     return $result;
 }
@@ -148,7 +148,36 @@ public function afficheretat(){
          $chambre->getWifi(). $chambre->getEtat()."<br>";
     }
     }
+    public function afficherChambre(){
+        /*$result= "Chambre:". $this->getNumeroChambre().
+         " ".$this->getNbLit()."lits".
+         "-".$this->getPrix()."€ - Wifi:".$this->getWifi().
+         " - dispo:".$this->getEtat()."<br>";*/
+       echo 
+         "<table cellpadding = '10'>
+         <thead>
+           <tr>
+               <th>Chambre</th>
+               <th>Prix</th>
+               <th>wifi</th>
+               <th>Etat</th>
+            </tr>
+          </thead>
+          <tbody>";
+         foreach($this->chambres as $chambre){
+            echo "<table>
+         <tr>
+              <td>Chambre:".$chambre->getNumeroChambre(). "</td>
+              <td>Prix: ".$chambre->getPrix()."€</td>
+              <td>wifi:".$chambre->getWifi(). "</td>
+              <td>etat:".$chambre->getEtat()."</td>
+           </tr>";
 
+
+         }
+         "</tbody>
+         </table>";
+        }
     public function __toString(){
         return $this->afficherInfoHotel();
     }

@@ -16,8 +16,8 @@ $client3 = new Client("MURMANN ", "Micka", 4 ,"01-04-2021","01-04-2021");
 $Hilton = new Hotel("Hilton","10 route de la gare", "67000", "Strabourg");
 $Regent = new Hotel("Regent ", "10 rue de la Seine","75000", "Paris");
 
-$c1 = new Chambre(1, 2, true, 120, true, $Hilton);
-$c2 = new Chambre(2, 2, true, 120, true, $Hilton);
+$c1 = new Chambre(1, 2, true, 120, $Hilton);
+$c2 = new Chambre(2, 2, true, 120, $Hilton);
 
 $reservation1 = new Reservation($client1, "01-01-2023", "04-01-2023", $c1); //ajouter obj chambre
 $reservation2 = new Reservation($client2, "15-01-2023", "16-01-2023", $c2) ;
@@ -38,3 +38,5 @@ echo $client1->afficherReservationsClient();
 echo $Hilton->afficherReservationsHotel();
 echo $Regent->afficherReservationsHotel();
 
+
+echo $Hilton->afficherChambre();

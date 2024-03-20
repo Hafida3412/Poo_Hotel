@@ -75,7 +75,7 @@ public function calculerMontantTotal(){
    return "Montant total:". $nbNuits * $this->chambre->getPrix()."€<br>"; //chambre get =prix
 }
 
-public function afficherReservations(){
+public function afficherReservation(){
    $result= "Hôtel:".$this->chambre->getHotel()->addReservation($this). "Chambre:" .$this->getChambre(). "du"
    .$this->getDateDebut(). "au" .$this->getDateFin();   
 }
