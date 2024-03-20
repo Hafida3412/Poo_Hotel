@@ -7,16 +7,18 @@ private DateTime $dateDebut;
 private DateTime $dateFin;
 private Chambre $chambre;
 
+/********************FUNCTION CONSTRUCT****************************/
 public function __construct( Client $client, string $dateDebut,
 string $dateFin, Chambre $chambre){
    $this->client = $client;
    $this->dateDebut = new DateTime($dateDebut);
    $this->dateFin = new DateTime($dateFin);
    $this->chambre = $chambre;
-   $this->chambre->getHotel()->addReservation($this);
-   $this->client->addReservation($this);
+   $this->chambre->setEtat(false);/*lorsque la chambre est réservée, elle ne peut pas être disponible*/
+   $this->chambre->getHotel()->addReservation($this);/*la chambre appartient à un hôtel. Nous lui rajoutons addReservations*/
+   $this->client->addReservation($this);/*rajout des réservations*/
 }
-   
+/*********************GETTERS AND SETTERS**************************/  
 public function getClient()
 {
 return $this->client;
@@ -31,7 +33,7 @@ return $this;
 
 public function getDateDebut()
 {
-return $this->dateDebut->format("d-m-Y");
+return $this->dateDebut->format("d-m-Y");/*PRECISION DU FORMAT DE LA DATE*/
 }
 
 public function setDateDebut($dateDebut)
@@ -65,16 +67,19 @@ $this->chambre = $chambre;
 return $this;
 }
 
+/*******************FUNCTION CALCULER NBNUITS********************/
 public function calculerNbNuits(){
    $diff= $this->dateDebut->diff($this->dateFin);
    return $diff->days;
 }
 
+/********************FUNCTION POUR CALCULER LE TOTAL ************/
 public function calculerMontantTotal(){
    $nbNuits = $this->calculerNbNuits();
    return "Montant total:". $nbNuits * $this->chambre->getPrix()."€<br>"; //chambre get =prix
 }
 
+/**********************AFFICHER RESERVATIONS DE L HOTEL************/
 public function afficherReservation(){
    $result= "Hôtel:".$this->chambre->getHotel()->addReservation($this). "Chambre:" .$this->getChambre(). "du"
    .$this->getDateDebut(). "au" .$this->getDateFin();   

@@ -1,6 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
 <?php
 
-  /*  require("reservation.php");
+  /*require("reservation.php");
     require("Hotel.php");
     require("client.php");
     require("chambre.php");*/
@@ -20,8 +32,8 @@ $c1 = new Chambre(1, 2, true, 120, $Hilton);
 $c2 = new Chambre(2, 2, true, 120, $Hilton);
 
 $reservation1 = new Reservation($client1, "01-01-2023", "04-01-2023", $c1); //ajouter obj chambre
-$reservation2 = new Reservation($client2, "15-01-2023", "16-01-2023", $c2) ;
-$reservation2 = new Reservation($client2, "15-01-2023", "17-01-2023", $c1) ;
+// $reservation2 = new Reservation($client2, "15-01-2023", "16-01-2023", $c2) ;
+// $reservation2 = new Reservation($client2, "15-01-2023", "17-01-2023", $c1) ;
 
 echo $Hilton->afficherInfoHotel();
 
@@ -40,3 +52,8 @@ echo $Regent->afficherReservationsHotel();
 
 
 echo $Hilton->afficherChambre();
+
+?>
+
+</body>
+</html>

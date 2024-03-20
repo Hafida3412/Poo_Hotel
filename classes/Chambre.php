@@ -6,23 +6,23 @@ class Chambre{
     private bool $wifi;
     private float $prix;
     private bool $etat;
-    private array $reservations;
+    private array $reservations;//AJOUT ARRAY RESERVATIONS
 
     private Hotel $hotel;
 
-
+/************************FUNCTION CONSTRUCT*************************/
     public function __construct(int $numeroChambre, string $nbLit, bool $wifi,
     float $prix, Hotel $hotel){
         $this->numeroChambre = $numeroChambre;
         $this->nbLit = $nbLit;
-        $this->wifi = $wifi;
+        $this->wifi = $wifi;//POUR LA FUNCTION ETAT WIFI
         $this->prix = $prix;
-        $this->etat = true;
+        $this->etat = true;//POUR LA FUNCTION ETAT DISPO CHBRE
         $this->reservations = [];
         $this->hotel = $hotel;
         $this->hotel->addChambre($this); // add chambre à hotel
     }
-
+/***********************GETTERS AND SETTERS*************************/
     public function getNumeroChambre(): int
     {
         return $this->numeroChambre;
@@ -35,7 +35,7 @@ class Chambre{
         return $this;
     }
 
-    public function getNbLit(): string
+    public function getNbLit(): string//PRECISER L UNITE
     {
         return $this->nbLit;
     }
@@ -105,38 +105,20 @@ class Chambre{
     
         return $this;
     }
-    
+/***********************ADD RESERVATIONS***************************/   
     public function addReservations(Reservation $reservation){
         $this->reservations[] = $reservation;
     }
+/***********************AFFICHER CHAMBRE***************************/
     public function afficherChambre(){
         $result= "Chambre:". $this->getNumeroChambre().
          " ".$this->getNbLit()."lits".
-         "-".$this->getPrix()."€ - Wifi:".$this->getWifi().
+         "-".$this->getPrix()."€ -".$this->getWifi().
          " - dispo:".$this->getEtat()."<br>";
        
         
          }
         
-    
-    public function afficherEtat(){
-        
-        $etat = true;
-        $wifi = true;
-
-        if ($etat) {
-        echo 'disponible';
-        if ($wifi) {
-            echo 'wifi';
-        } else {
-            echo '';
-        }
-        } else {
-        echo 'réservée';
-        }
-    
-    }
-
 }
 
 

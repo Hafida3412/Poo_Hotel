@@ -6,10 +6,10 @@ class Client{
     private string $numeroChambre;
     private $dateDebut;
     private $dateFin;
-    private array $reservations;
+    private array $reservations;//AJOUT ARRAY RESERVATIONS
 
    
-
+/**********************FUNCTION CONSTRUCT**************************/
     public function __construct(string $nom, string $prenom, string $numeroChambre, $dateDebut,
      $dateFin ){
         $this->nom = $nom;
@@ -18,10 +18,8 @@ class Client{
         $this->dateDebut = $dateDebut;
         $this->dateFin = $dateFin;
         $this->reservations = [];
-    
-
     }
-
+/*********************GETTERS AND SETTERS**************************/
     public function getNom(): string
     {
         return $this->nom;
@@ -70,11 +68,9 @@ class Client{
         return $this;
     }
     
-    
     public function getDateFin(){
         return $this->dateFin;
     }
-    
     
     public function setDateFin($dateFin)
     {
@@ -93,15 +89,16 @@ class Client{
 
         return $this;
     }
-    
+ /**************************AFFICHER INFOS HOTEL********************/   
         public function getInfos(){
             return "<h2>".$this. "Chambre:".$this->getNumeroChambre()." - du ".$this->getDateDebut().
             " au ".$this->getDateFin()."</h2>";
         }
-        
+ /*************************ADD RESERVATION**************************/       
         public function addReservation(Reservation $reservation){
             $this->reservations[] = $reservation;
         }
+/**************************AFFICHER RESERVATIONS CLIENT**************/
         public function afficherReservationsClient (){
             $result= "<h3>Reservation de " .$this. ": </h3>";
             
@@ -114,7 +111,7 @@ class Client{
             $result .= "<br>"."<br>";
             return $result;
         }
-        
+/***************************FUNCTION TOSTRING************************/        
     public function __toString(){
         return $this->nom." ".$this->prenom;
     }

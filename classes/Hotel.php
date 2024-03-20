@@ -6,22 +6,21 @@ class Hotel{
     private string $cp;
     private string $ville;
 
-    private array $reservations;
-    private array $chambres;
+    private array $reservations;/*AJOUT FILE RESERVATIONS*/
+    private array $chambres;/*AJOUT FILE CHAMBRE*/
 
     public function __construct(string $raisonSociale, string $adresse, $cp, string $ville){
         $this->raisonSociale = $raisonSociale;
         $this->adresse = $adresse;
         $this->cp = $cp;
         $this->ville = $ville;
-        $this->reservations = [];
-        $this->chambres = [];
+        $this->reservations = [];/*AJOUT ARRAY RESERVATIONS*/
+        $this->chambres = [];/*AJOUT ARRAY CHAMBRES*/
       
     }
 
-
-
-    public function getRaisonSociale(): string
+/********************GETTERS AND SETTERS***************************/
+    public function getRaisonSociale(): string//PRECISER L UNITE
     {
         return $this->raisonSociale;
     }
@@ -69,7 +68,6 @@ class Hotel{
         return $this;
     }
     
-
     public function getAdresseComplete(){
         return $this->adresse." ".$this->cp." ".$this->ville;
     }
@@ -95,13 +93,14 @@ class Hotel{
         return $this;
     }
     
-    /********************CALCUL DU NOMBRE DE CHAMBRES***************************/
+/********************CALCUL DU NOMBRE DE CHAMBRES***************************/
     public function calcNbChambre(){
         
         $nbChambre = count($this->chambres);
         return $nbChambre;
     }
-    /********************DISPONIBILTE DES CHAMBRES******************************/
+    
+/********************DISPONIBILTE DES CHAMBRES******************************/
     public function disponibilite(){
         $nombreChambre=0;
         foreach($this->chambres as $chambre){
@@ -111,7 +110,7 @@ class Hotel{
     }
     return $nombreChambre;
 }
-/********************CALCUL DU NOMBRE DE CHAMBRE RESERVED******************/
+/********************CALCUL DU NOMBRE DE CHAMBRE RESERVED ******************/
 public function nbChambreReserved(){
     $nbChambreReserved= $this->calcNbChambre() - $this->disponibilite();
     return $nbChambreReserved;
@@ -123,11 +122,11 @@ public function afficherInfoHotel(){
     "<br>" ."Nombre de chambres:".$this->calcNbChambre()."<br>". "Nombre de chambres disponibles:".
     $this->disponibilite(). "<br>". "Nombre de chambres réservées:".$this->nbChambreReserved(). "<br>"; 
 }
-
+/********************ADD RESERVATIONS********************************/
 public function addReservation(Reservation $reservation){
     $this->reservations[] = $reservation;
 }
-
+/********************AFFICHER RESERVATION HOTEL**********************/
 public function afficherReservationsHotel(){
     $result = "<h1>Reservation de" .$this."</h1>";
     
@@ -137,24 +136,24 @@ public function afficherReservationsHotel(){
     }
     return $result;
 }
-
+/*********************ADD CHAMBRE***********************************/
 public function addChambre(Chambre $chambre){
 
     $this->chambres[] = $chambre;
 }
+/**********************AFFICHER ETAT********************************/
 public function afficheretat(){
         foreach($this->chambres as $chambre){
-        echo "Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix().
-         $chambre->getWifi(). $chambre->getEtat()."<br>";
+        echo "<h2>Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix().
+         $chambre->getWifi(). $chambre->getEtat()."<br></h2>";
     }
     }
+/**********************AFFICHER CHAMBRE******************************/    
     public function afficherChambre(){
-        /*$result= "Chambre:". $this->getNumeroChambre().
-         " ".$this->getNbLit()."lits".
-         "-".$this->getPrix()."€ - Wifi:".$this->getWifi().
-         " - dispo:".$this->getEtat()."<br>";*/
+        /********CREATION D UN TABLEAU**********/
+          /*Formule pour afficher les cellules du tableau*/
        echo 
-         "<table cellpadding = '10'>
+         "<table border=1 cellpadding = '10'> 
          <thead>
            <tr>
                <th>Chambre</th>
@@ -164,23 +163,32 @@ public function afficheretat(){
             </tr>
           </thead>
           <tbody>";
+
          foreach($this->chambres as $chambre){
-            echo "<table>
+         /********AFFICHER WIFI ET DISPONIBILITE CHAMBRE*/   
+            $wifi = $chambre->getWifi() ? "wifi":" ";
+            $etat = $chambre->getEtat() ? "disponible":"réservée";
+
+        /***CREATION DES COLONNES DU TABLEAU/CE QUI EST NOTE A L INTERIEUR*/
+            echo "
          <tr>
               <td>Chambre:".$chambre->getNumeroChambre(). "</td>
               <td>Prix: ".$chambre->getPrix()."€</td>
-              <td>wifi:".$chambre->getWifi(). "</td>
-              <td>etat:".$chambre->getEtat()."</td>
+              <td>wifi:".$wifi."</td>
+              <td>etat:".$etat."</td>
            </tr>";
-
 
          }
          "</tbody>
          </table>";
+
         }
+
+/***************FUNCTION TO STRING**********************************/
     public function __toString(){
         return $this->afficherInfoHotel();
     }
+  
 
 
 }
