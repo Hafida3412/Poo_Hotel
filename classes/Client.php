@@ -91,8 +91,8 @@ class Client{
     }
  /**************************AFFICHER INFOS HOTEL********************/   
         public function getInfos(){
-            return "<h2>".$this. "Chambre:".$this->getNumeroChambre()." - du ".$this->getDateDebut().
-            " au ".$this->getDateFin()."</h2>";
+            return "<h4>".$this. "Chambre:".$this->getNumeroChambre()." - du ".$this->getDateDebut().
+            " au ".$this->getDateFin()."</h4>";
         }
  /*************************ADD RESERVATION**************************/       
         public function addReservation(Reservation $reservation){
@@ -100,12 +100,12 @@ class Client{
         }
 /**************************AFFICHER RESERVATIONS CLIENT**************/
         public function afficherReservationsClient (){
-            $result= "<h3>Reservation de " .$this. ": </h3>";
+            $result= "<h5>Reservation de " .$this. ": </h5>";
             
             foreach ($this->reservations as $reservation){
                 $result .= $reservation->getClient()->getNom()."<br>". "<br>". $reservation->calculerMontantTotal()."<br>".
-                 " ".$this->getNumeroChambre().
-                 "du " .$reservation->getDateDebut()."au ".$reservation->getDateFin(). "<br>";
+                 " Chambre: ".$this->getNumeroChambre().
+                 ", du " .$reservation->getDateDebut()." au ".$reservation->getDateFin(). "<br>";
             }
 
             $result .= "<br>"."<br>";

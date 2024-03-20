@@ -81,8 +81,8 @@ public function calculerMontantTotal(){
 
 /**********************AFFICHER RESERVATIONS DE L HOTEL************/
 public function afficherReservation(){
-   $result= "Hôtel:".$this->chambre->getHotel()->addReservation($this). "Chambre:" .$this->getChambre(). "du"
-   .$this->getDateDebut(). "au" .$this->getDateFin();   
+   $result= "<h7>Hôtel:".$this->chambre->getHotel()->addReservation($this). "Chambre:" .$this->getChambre(). "du"
+   .$this->getDateDebut(). "au" .$this->getDateFin()."</h7>";   
 }
 
 }

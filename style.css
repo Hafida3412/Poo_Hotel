@@ -1,11 +1,24 @@
-.h1{
-    font-size: 25px;
+
+h1{
+    font-size: 20px;
+    color:darkslateblue;
+
+}
+h2{
+    font-size:20px;
+    color:blue;
 }
 
-.h2{
-    font-size: 25px;
+h5{font-size:20px;
+    color: green;
+
+}
+h6{
+   font-size:20px;
+   color:brown;
 }
 
-.h3{
-    font-size: 25px;
+h7{
+    font-size:20px;
+    color:chocolate;
 }

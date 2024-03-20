@@ -118,9 +118,9 @@ public function nbChambreReserved(){
 
 /*********************INFOS HOTEL*******************************************/
 public function afficherInfoHotel(){
-    return  $this->getRaisonSociale(). "<br>". $this->getAdresseComplete().
+    return  "<h1>".$this->getRaisonSociale(). "<br>". $this->getAdresseComplete().
     "<br>" ."Nombre de chambres:".$this->calcNbChambre()."<br>". "Nombre de chambres disponibles:".
-    $this->disponibilite(). "<br>". "Nombre de chambres réservées:".$this->nbChambreReserved(). "<br>"; 
+    $this->disponibilite(). "<br>". "Nombre de chambres réservées:".$this->nbChambreReserved(). "</h1><br>"; 
 }
 /********************ADD RESERVATIONS********************************/
 public function addReservation(Reservation $reservation){
@@ -128,7 +128,7 @@ public function addReservation(Reservation $reservation){
 }
 /********************AFFICHER RESERVATION HOTEL**********************/
 public function afficherReservationsHotel(){
-    $result = "<h1>Reservation de" .$this."</h1>";
+    $result = "<h2>Reservation de" .$this."</h2>";
     
     foreach ($this->reservations as $reservation){
         $result .= $reservation->getClient()->getNom()."<br>". /*$Chambres->getNumeroChambre()*/
@@ -144,8 +144,8 @@ public function addChambre(Chambre $chambre){
 /**********************AFFICHER ETAT********************************/
 public function afficheretat(){
         foreach($this->chambres as $chambre){
-        echo "<h2>Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix().
-         $chambre->getWifi(). $chambre->getEtat()."<br></h2>";
+        echo "<h3>Chambre:" .$chambre->getNumeroChambre(). $chambre->getPrix().
+         $chambre->getWifi(). $chambre->getEtat()."<br></h3>";
     }
     }
 /**********************AFFICHER CHAMBRE******************************/    

@@ -111,10 +111,10 @@ class Chambre{
     }
 /***********************AFFICHER CHAMBRE***************************/
     public function afficherChambre(){
-        $result= "Chambre:". $this->getNumeroChambre().
+        $result= "<h6>Chambre:". $this->getNumeroChambre().
          " ".$this->getNbLit()."lits".
          "-".$this->getPrix()."€ -".$this->getWifi().
-         " - dispo:".$this->getEtat()."<br>";
+         " - dispo:".$this->getEtat()."</h6><br>";
        
         
          }
